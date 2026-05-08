@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Virtual Customer Support Agent</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 600px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            margin: 0;
+            color: #1e3c72;
+        }
+
+        h3 {
+            margin-top: 5px;
+            color: gray;
+            font-weight: normal;
+        }
+
+        .input-section {
+            margin-top: 25px;
+            display: flex;
+            gap: 10px;
+        }
+
+        input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+
+        button {
+            background-color: #1e3c72;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background-color: #16325c;
+        }
+
+        #response {
+            margin-top: 25px;
+            background: #f7f9fc;
+            padding: 15px;
+            border-radius: 10px;
+            min-height: 100px;
+            white-space: pre-line;
+            line-height: 1.6;
+            border: 1px solid #ddd;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .examples {
+            margin-top: 20px;
+            color: #555;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Crescent Finance</h1>
+    <h3>AI Customer Support</h3>
+
+    <div class="input-section">
+        <input
+            type="text"
+            id="message"
+            placeholder="Ask about loan balance, payment due, late fee..."
+        />
+
+        <button onclick="sendMessage()">
+            Send
+        </button>
+    </div>
+
+    <div class="examples">
+        Example questions:
+        <br><br>
+        • What is my loan balance?
+        <br>
+        • When is my payment due?
+        <br>
+        • I want to speak to customer care
+    </div>
+
+    <div id="response"></div>
+
+    <audio id="audioPlayer" controls></audio>
+
+</div>
+
+<script>
+
+async function sendMessage() {
+
+    const message = document.getElementById("message").value;
+
+    document.getElementById("response").innerText =
+        "Generating response...";
+
+    const response = await fetch("/chat", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            message: message
+        })
+    });
+
+    const data = await response.json();
+
+    document.getElementById("response").innerText =
+        data.response;
+
+    const audioPlayer =
+        document.getElementById("audioPlayer");
+
+    audioPlayer.src = "/" + data.audio;
+
+    audioPlayer.load();
+}
+
+</script>
+
+</body>
+</html>
