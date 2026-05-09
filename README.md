@@ -125,6 +125,8 @@ http://127.0.0.1:5001
 ```
 
 ## 📂 Project Structure
+
+```text
 customer-service-agent/
 │
 ├── app.py                  # Flask backend
@@ -134,3 +136,4 @@ customer-service-agent/
 ├── requirements.txt       # Dependencies
 ├── .gitignore             # Ignored files
 └── README.md
+```
