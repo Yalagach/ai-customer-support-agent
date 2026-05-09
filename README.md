@@ -8,6 +8,7 @@ This project demonstrates a **hybrid AI architecture** combining:
 - Text-to-speech voice generation
 - Simple interactive web UI
 
+---
 
 ## 🚀 Features
 
@@ -21,6 +22,7 @@ This project demonstrates a **hybrid AI architecture** combining:
 - Simple web-based chat interface
 - Audio playback for AI responses
 
+---
 
 ## 💬 Example Queries
 
@@ -31,6 +33,7 @@ You can try the following:
 - How much is the late fee?
 - I want to speak to customer care
 
+---
 
 ## Tech Stack
 
@@ -46,6 +49,7 @@ You can try the following:
 - CSS
 - JavaScript
 
+---
 
 ## 🧠 System Architecture
 
@@ -68,7 +72,7 @@ gTTS (Text → Speech)
         ↓
 Response + Audio returned to UI
 ```
-
+---
 
 ## 🔑 Key Design Decisions
 ```text
